@@ -30,10 +30,10 @@ m = len(x_train)
 print(f"Number of training examples {m}")
 
 for i in range(0, len(x_train)):
-    print(f"(x({i}),y({i})) = ({x_train[i]},{y_train[i]})")
+    print(f"(x({i+1}),y({i+1})) = ({x_train[i]},{y_train[i]})")
 
-w = 240
-b = -15
+w = 200
+b = -10
 print(f"w: {w}")
 print(f"b: {b}")
 

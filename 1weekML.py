@@ -23,6 +23,7 @@ def cost_function(y, f_wb):
     return j_wb / (2 * m)
 
 
+# Training examples
 x_train = np.array([0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0])
 y_train = np.array([45, 55, 70, 120, 190, 225, 260, 300, 370, 400])
 
@@ -30,27 +31,33 @@ m = len(x_train)
 print(f"Number of training examples {m}")
 
 for i in range(0, len(x_train)):
-    print(f"(x({i+1}),y({i+1})) = ({x_train[i]},{y_train[i]})")
+    print(f"(x({i + 1}),y({i + 1})) = ({x_train[i]},{y_train[i]})")
 
+# Weights
 w = 200
 b = -10
 print(f"w: {w}")
 print(f"b: {b}")
 
+# Calculate predicted function
 pred_f_wb = calculate_model_output(w, b, x_train)
 
-plt.plot(x_train, pred_f_wb, c='r', label='Prediction')
+# Calculating cost function
+j_wb = cost_function(y_train, pred_f_wb)
+print(f"Cost function value {j_wb}")
 
+# Build the graph
+plt.plot(x_train, pred_f_wb, c='r', label='Prediction')
 plt.scatter(x_train, y_train, marker='x', c='g', label='Actual')
+
+# Draw the graph
 plt.title("Housing Prices")
 plt.ylabel("Price in 1000s Dollars")
 plt.xlabel("Size in 100 sq/m")
 plt.legend()
 plt.show()
 
-j_wb = cost_function(y_train, pred_f_wb)
-print(f"Cost function value {j_wb}")
-
+# Predicting the client's house cost by house size input
 size = 1.5
 cost_client_sqft = w * size + b
 
